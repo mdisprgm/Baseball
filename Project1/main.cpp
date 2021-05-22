@@ -89,10 +89,10 @@ public:
 		ch::microseconds microSec = ch::duration_cast<ch::microseconds>(end - start);//us 단위로 계산
 
 		if (permission == Developer) {//Developer, 개발자 모드면 정답과 시도 횟수까지 출력
-			std::cout << serverName << " 숫자가 생성되었습니다 : " << m_a << m_b << m_c << " (" << microSec.count() << "us)" << " tried " << tried << " times\n";
+			std::cout << serverName << " 숫자가 생성되었습니다 : " << m_a << m_b << m_c << " (" << microSec.count() << "us)" << " tried " << tried << " times" << std::endl;
 		}
 		else if (permission == User) {//USER, 유저 모드면 생성됐다는 메시지만 출력
-			std::cout << serverName << " 숫자가 생성되었습니다 (" << microSec.count() << "us 소요)\n";
+			std::cout << serverName << " 숫자가 생성되었습니다 (" << microSec.count() << "us 소요)" << std::endl;
 		}
 		/*arr[a - 49]++;
 		arr[b - 49]++;
@@ -106,7 +106,7 @@ public:
 		static int triedCnt = 1;//예측한 횟수
 		//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
 		while (1) {//무한 루프
-			std::cout << "숫자를 예측해보세요 : ";
+			std::cout << serverName << ' ' << "숫자를 예측해보세요 : ";
 			std::cin >> m_afp >> m_bfp >> m_cfp;//하나씩 입력받고
 
 			if (isAvailable(m_afp) && isAvailable(m_bfp) && isAvailable(m_cfp)) {//모두 유효한지 확인
@@ -114,10 +114,10 @@ public:
 					if (m_afp == m_a) strike++;//스트라이크
 					else if (m_afp == m_b || m_afp == m_c) ball++;//볼
 
-					else if (m_bfp == m_b) strike++;
+					if (m_bfp == m_b) strike++;
 					else if (m_bfp == m_a || m_bfp == m_c) ball++;
 
-					else if (m_cfp == m_c) strike++;
+					if (m_cfp == m_c) strike++;
 					else if (m_cfp == m_a || m_cfp == m_b) ball++;
 
 					else {//OUT
@@ -127,7 +127,8 @@ public:
 					break;
 				}
 				else {
-					std::cout << "예측한 숫자의 각 자릿수는 모두 같지 않아야 합니다!\n다시 입력해주세요" << std::endl;
+					std::cout << serverName << ' ' << "예측한 숫자의 각 자릿수는 모두 같지 않아야 합니다!" << std::endl;
+					std::cout << serverName << ' ' << "다시 입력해주세요" << std::endl;
 				}
 			}
 		}
@@ -152,15 +153,15 @@ int main() {
 		const std::string serverName = "[GAME]";
 
 		char permission;
-		std::cout << "0 : 개발자 테스트 모드\n1 : 유저 플레이 모드\n모드를 선택하세요 : ";
+		std::cout << "0 : 개발자 테스트 모드\n1 : 유저 플레이 모드\n" << serverName << ' ' << "모드를 선택하세요 : ";
 		std::cin >> permission;
 
 		if (permission > '9' || permission < '0') {
-			std::cout << "유효하지 않은 숫자입니다" << std::endl;
+			std::cout << serverName << ' ' << "유효하지 않은 숫자입니다" << std::endl;
 			return 0;
 		}
 		else if (permission != '0' && permission != '1') {
-			std::cout << "허용되지 않는 모드입니다" << std::endl;
+			std::cout << serverName << ' ' << "허용되지 않는 모드입니다" << std::endl;
 		}
 
 		NumberBaseball game(permission - 48, serverName); //auto generate a number
@@ -179,6 +180,7 @@ int main() {
 				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다." << std::endl;
 				std::cout << "게임을 다시 시작하시겠습니까? (Y/N) : ";
 				char restart = _getch();
+				std::cout << std::endl;
 				if (restart == 'N' || restart == 'n') {
 					return 0; //return in main; exit
 				}
@@ -213,10 +215,10 @@ int main() {
 						std::cout << serverName << ' ' << strikeMsg << "! 과연 무엇이 옳은 숫자일까요?" << std::endl;
 						break;
 					case 1:
-						std::cout << serverName << ' ' << strikeMsg << "좋아요. 빨리 다른 숫자도 맞춰보는 거에요!" << std::endl;
+						std::cout << serverName << ' ' << strikeMsg << ' ' << ballMsg << " 좋아요. 빨리 다른 숫자도 맞춰보는 거에요!" << std::endl;
 						break;
 					case 2:
-						std::cout << serverName << ' ' << strikeMsg << "! 정답은 이 숫자들로만 이루어져있겠군요!" << std::endl;
+						std::cout << serverName << ' ' << strikeMsg << ' ' << ballMsg << "! 정답은 이 숫자들로만 이루어져있겠군요!" << std::endl;
 						break;
 					}
 				}
