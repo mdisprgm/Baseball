@@ -1,10 +1,9 @@
-﻿#include "headers.h"
+﻿#include <iostream>
+#include <chrono>
+#include <random>
+#include <conio.h>
 
-enum class Permission {//권한
-	Developer = 0,//개발자
-	User = 1//유저
-};
-
+#include "headers.h"
 
 int main() {
 	while (1) {
@@ -22,7 +21,7 @@ int main() {
 			std::cout << serverName << ' ' << "허용되지 않는 모드입니다" << std::endl;
 		}
 
-		NumberBaseball game(permission - 48, serverName); //auto generate a number
+		NBBall game(permission - 48, serverName); //auto generate a number
 									//'0' to 0
 
 		while (1) {//GAME START!

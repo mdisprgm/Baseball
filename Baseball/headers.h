@@ -12,6 +12,7 @@ namespace ch = std::chrono;
 
 #include <conio.h>
 
+#include "NumberBaseball.h"
 #include "NumberBaseballResult.h"
 
 //Permissions
