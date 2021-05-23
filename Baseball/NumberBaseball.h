@@ -25,8 +25,4 @@ public:
 
 }NBBall;
 
-std::ostream& operator<<(std::ostream& os, NBBall& game) {
-	os << game.prefix();
-	return os;
-}
 #endif

@@ -45,7 +45,7 @@ bool NBResult::isHomerun() {
 	return false;
 }
 
-std::ostream& operator<<(std::ostream& os, NBResult& result) {
+std::ostream& operator<<(std::ostream& os, NBResult& result) {//broadcast
 	count_t strike = result.strike();
 	count_t ball = result.ball();
 

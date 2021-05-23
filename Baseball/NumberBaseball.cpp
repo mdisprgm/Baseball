@@ -93,7 +93,7 @@ std::string NBBall::prefix() const {
 }
 
 
-std::ostream& operator<<(std::ostream& os, NBBall& game) {
+std::ostream& operator<<(std::ostream& os, NBBall& game) {//broadcast
 	os << game.prefix();
 	return os;
 }
