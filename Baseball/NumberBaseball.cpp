@@ -1,12 +1,10 @@
 #pragma once
 
-#ifndef __NUMBERBASEBALL_CPP__
-#define __NUMBERBASEBALL_CPP__
 #include "NumberBaseball.h"
 
 NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), m_b(0), m_c(0), serverName(serverName) {//Server::serverName(접두사)를 ROOT으로, 권한을 입력받음
 	ch::system_clock::time_point start = ch::system_clock::now();//생성 시간 측정 (start)
-	std::cout << serverName << "숫자를 생성합니다" << std::endl;
+	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
 	//랜덤한 세 자리수 생성,단 자릿수의 숫자는 모두 다름
 	std::random_device rnDev;
@@ -90,4 +88,12 @@ char NBBall::c() const {
 	return m_c;
 }
 
-#endif
+std::string NBBall::prefix() const {
+	return serverName;
+}
+
+
+std::ostream& operator<<(std::ostream& os, NBBall& game) {
+	os << game.prefix();
+	return os;
+}

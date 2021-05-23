@@ -9,7 +9,6 @@
 #include <chrono>
 namespace ch = std::chrono;
 
-
 #include <conio.h>
 
 #include "NumberBaseballResult.h"

@@ -5,7 +5,29 @@
 
 #include "headers.h"
 
+std::ostream& operator<<(std::ostream& os, NBBall& game) {
+	os << game.prefix();
+	return os;
+}
+std::ostream& operator<<(std::ostream& os, const NBResult& result) {
+	count_t strike = result.strike();
+	count_t ball = result.ball();
+
+	std::string strikeMsg = std::to_string(strike) + "S";
+	std::string ballMsg = std::to_string(ball) + "B";
+
+	if (strike == 0) {
+		switch (ball) {
+		case 1:
+			os << ' ' << ballMsg << "이라니.. 아쉽네요. 이번엔 다른 숫자를 입력해보세요!" << std::endl;
+			break;
+		}
+	}
+	return os;
+}
+
 int main() {
+	NBBall game(0,"[GAME]");
 	while (1) {
 		const std::string serverName = "[GAME]";
 
@@ -31,6 +53,7 @@ int main() {
 
 			if (result.isOut()) {//아웃이면
 				std::cout << "아웃입니다! 입력한 숫자와 정답이 전혀 일치하지 않습니다" << std::endl;
+				//game.say("아웃입니다! 입력한 숫자와 정답이 전혀 일치하지 않습니다");
 			}
 			else if (result.isHomerun()) {//정답이면
 				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다." << std::endl;

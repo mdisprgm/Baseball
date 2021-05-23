@@ -14,11 +14,19 @@ typedef class NumberBaseball {//안내를 위한 Server 상속
 public:
 	NumberBaseball(char, const std::string);//permission,serverName
 
+	NBResult askPlayerNumber(void);
+
 	//getters
 	char a() const;
 	char b() const;
 	char c() const;
 
-	NBResult askPlayerNumber(void);
+	std::string prefix() const;
+
 }NBBall;
-#endif	
+
+std::ostream& operator<<(std::ostream& os, NBBall& game) {
+	os << game.prefix();
+	return os;
+}
+#endif
