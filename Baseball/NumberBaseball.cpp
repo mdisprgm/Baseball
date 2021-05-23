@@ -40,7 +40,7 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), 
 	std::cout << a << b << c << std::endl;*/ // for Debugging
 }
 
-NBResult NBBall::askPlayerNumber() {//숫자 묻기
+NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
 	char strike = 0, ball = 0, out = 0;//result
 	static int triedCnt = 1;//예측한 횟수
 	//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
@@ -72,6 +72,11 @@ NBResult NBBall::askPlayerNumber() {//숫자 묻기
 		}
 	}
 	return NBResult(strike, ball, out);
+}
+
+inline bool NBBall::isAvailable(char num) {//유효한 값(자릿수)인가
+	if (num > '9' || num < '0') return false;
+	else return true;
 }
 
 //getters

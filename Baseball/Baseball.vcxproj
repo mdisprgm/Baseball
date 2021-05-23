@@ -141,10 +141,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NumberBaseball.cpp" />
     <ClCompile Include="NumberBaseballResult.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers.h" />
+    <ClInclude Include="NumberBaseball.h" />
     <ClInclude Include="NumberBaseballResult.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

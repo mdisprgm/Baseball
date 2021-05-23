@@ -21,9 +21,8 @@ int main() {
 			std::cout << serverName << ' ' << "허용되지 않는 모드입니다" << std::endl;
 		}
 
-		NBBall game(permission - 48, serverName); //auto generate a number
+		NBBall game = NBBall(permission - 48, serverName); //auto generate a number
 									//'0' to 0
-
 		while (1) {//GAME START!
 			NBResult result = game.askPlayerNumber();
 

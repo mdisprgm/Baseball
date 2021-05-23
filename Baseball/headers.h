@@ -12,8 +12,8 @@ namespace ch = std::chrono;
 
 #include <conio.h>
 
-#include "NumberBaseball.h"
 #include "NumberBaseballResult.h"
+#include "NumberBaseball.h"
 
 //Permissions
 enum class Permission {//±ÇÇÑ
