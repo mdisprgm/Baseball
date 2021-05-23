@@ -145,6 +145,7 @@
     <ClCompile Include="NumberBaseballResult.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="broadcast.h" />
     <ClInclude Include="headers.h" />
     <ClInclude Include="NumberBaseball.h" />
     <ClInclude Include="NumberBaseballResult.h" />
