@@ -91,9 +91,3 @@ char NBBall::c() const {
 std::string NBBall::prefix() const {
 	return serverName;
 }
-
-
-std::ostream& operator<<(std::ostream& os, NBBall& game) {//broadcast
-	os << game.prefix();
-	return os;
-}

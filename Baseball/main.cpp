@@ -9,7 +9,7 @@ std::ostream& operator<<(std::ostream& os, NBBall& game) {
 	os << game.prefix();
 	return os;
 }
-std::ostream& operator<<(std::ostream& os, const NBResult& result) {
+std::ostream& operator<<(std::ostream& os, NBResult& result) {
 	count_t strike = result.strike();
 	count_t ball = result.ball();
 
@@ -27,7 +27,6 @@ std::ostream& operator<<(std::ostream& os, const NBResult& result) {
 }
 
 int main() {
-	NBBall game(0,"[GAME]");
 	while (1) {
 		const std::string serverName = "[GAME]";
 
@@ -42,7 +41,6 @@ int main() {
 		else if (permission != '0' && permission != '1') {
 			std::cout << serverName << ' ' << "허용되지 않는 모드입니다" << std::endl;
 		}
-
 		NBBall game = NBBall(permission - 48, serverName); //auto generate a number
 									//'0' to 0
 		while (1) {//GAME START!

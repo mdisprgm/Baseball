@@ -20,20 +20,4 @@ public:
 	bool isHomerun();
 } NBResult;//짧게 축약
 
-std::ostream& operator<<(std::ostream& os, NBResult& result) {
-	count_t strike = result.strike();
-	count_t ball = result.ball();
-
-	std::string strikeMsg = std::to_string(strike) + "S";
-	std::string ballMsg = std::to_string(ball) + "B";
-
-	if (strike == 0) {
-		switch (ball) {
-		case 1:
-			os << ' ' << ballMsg << "이라니.. 아쉽네요. 이번엔 다른 숫자를 입력해보세요!" << std::endl;
-			break;
-		}
-	}
-	return os;
-}
 #endif
