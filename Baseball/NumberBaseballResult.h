@@ -9,7 +9,7 @@ public:
 	NumberBaseballResult();
 	NumberBaseballResult(count_t, count_t, count_t);//s,b,o
 
-	//getters
+	//
 	count_t strike() const;
 	count_t ball() const;
 	count_t out() const;
