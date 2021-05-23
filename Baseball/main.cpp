@@ -5,6 +5,8 @@
 
 #include <conio.h>;
 
+#include "headers.h"
+
 namespace ch = std::chrono;
 
 enum Permission {//권한
@@ -12,46 +14,7 @@ enum Permission {//권한
 	User = 1//유저
 };
 
-typedef class NumberBaseballResult {//간단하게 스트라이크,볼,아웃을 저장
-	char m_strike, m_ball, m_out;//스트라이크,볼,아웃
-public:
-	NumberBaseballResult() {//기본 생성자 (모두 0으로)
-		m_strike = 0;
-		m_ball = 0;
-		m_out = 0;
-	}
-	NumberBaseballResult(char s, char b, char o) {//set 생성자 (입력받은 값으로)
-		m_strike = s;
-		m_ball = b;
-		m_out = o;
-	}
 
-	//getters
-	char strike() const {
-		return m_strike;
-	}
-	char ball() const {
-		return m_ball;
-	}
-	char out() const {
-		return m_out;
-	}
-
-	//is out
-	bool isOut() {
-		if (m_strike == 0 && m_ball == 0 && m_out == 1) {
-			return true;
-		}
-		return false;
-	}
-	//is homerun
-	bool isHomerun() {
-		if (m_strike == 3 && m_ball == 0 && m_out == 0) {
-			return true;
-		}
-		return false;
-	}
-} result_t;//짧게 축약
 
 class NumberBaseball {//안내를 위한 Server 상속
 	const std::string serverName;
@@ -100,7 +63,7 @@ public:
 		std::cout << a << b << c << std::endl;*/ // for Debugging
 	}
 
-	result_t askPlayerNumber() {//숫자 묻기
+	NBResult askPlayerNumber() {//숫자 묻기
 		char strike = 0, ball = 0, out = 0;//result
 
 		static int triedCnt = 1;//예측한 횟수
@@ -132,7 +95,7 @@ public:
 				}
 			}
 		}
-		return result_t(strike, ball, out);
+		return NBResult(strike, ball, out);
 	}
 	//getters
 	char a() const {
@@ -168,7 +131,7 @@ int main() {
 									//'0' to 0
 
 		while (1) {//GAME START!
-			result_t result = game.askPlayerNumber();
+			NBResult result = game.askPlayerNumber();
 
 			std::string strikeMsg;//스트라이크 수
 			std::string ballMsg;//볼 수
