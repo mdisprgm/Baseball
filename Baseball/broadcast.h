@@ -2,7 +2,7 @@
 #ifndef __BROADCAST_H__
 #define __BROADCAST_H__
 namespace Broadcast {
-    const char* message[4][4] = {//EC means ErrorCode
+    const char* messages[4][4] = {//EC means ErrorCode
       {//0S
         {
           "아웃입니다! 입력한 숫자와 정답이 전혀 일치하지 않습니다"//OUT
