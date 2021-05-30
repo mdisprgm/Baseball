@@ -1,7 +1,2 @@
-﻿  NumberBaseball.cpp
-  NumberBaseballResult.cpp
-  main.cpp
-  코드를 생성하고 있습니다...
-NumberBaseball.obj : error LNK2005: "char const * (* Broadcast::messages)[4]" (?messages@Broadcast@@3PAY03PBDA)이(가) main.obj에 이미 정의되어 있습니다.
-NumberBaseballResult.obj : error LNK2005: "char const * (* Broadcast::messages)[4]" (?messages@Broadcast@@3PAY03PBDA)이(가) main.obj에 이미 정의되어 있습니다.
-C:\Users\JHS\Source\Repos\Baseball\Debug\Baseball.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
+﻿  main.cpp
+  Baseball.vcxproj -> C:\Users\JHS\Source\Repos\Baseball\Debug\Baseball.exe

@@ -5,6 +5,8 @@
 
 #include "headers.h"
 
+#include "broadcast.h"
+
 std::ostream& operator<<(std::ostream& os, NBBall& game) {
 	os << game.prefix();
 	return os;
