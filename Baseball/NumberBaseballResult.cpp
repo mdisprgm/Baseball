@@ -26,20 +26,17 @@ count_t NBResult::strike() const {
 count_t NBResult::ball() const {
 	return m_ball;
 }
-count_t NBResult::out() const {
-	return m_out;
-}
 
 //is out
 bool NBResult::isOut() {
-	if (m_strike == 0 && m_ball == 0 && m_out == 1) {
+	if (m_strike == 0 && m_ball == 0) {
 		return true;
 	}
 	return false;
 }
 //is homerun (WIN)
 bool NBResult::isHomerun() {
-	if (m_strike == 3 && m_ball == 0 && m_out == 0) {
+	if (m_strike == 3 && m_ball == 0) {
 		return true;
 	}
 	return false;
