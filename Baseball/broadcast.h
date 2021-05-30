@@ -1,7 +1,7 @@
 #pragma once
 #ifndef __BROADCAST_H__
 #define __BROADCAST_H__
-namespace BC {
+namespace Broadcast {
     const char* message[4][4] = {//EC means ErrorCode
       {//0S
         {
@@ -38,6 +38,8 @@ namespace BC {
     };
 }
 #endif
+
+namespace BC = Broadcast;
 
 /*
 0s 0b : "아웃입니다! 입력한 숫자와 정답이 전혀 일치하지 않습니다"
