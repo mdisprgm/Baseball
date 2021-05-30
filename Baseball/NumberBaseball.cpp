@@ -1,6 +1,6 @@
 #pragma once
 
-#include "NumberBaseball.h"
+#include "headers.h"
 
 NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), m_b(0), m_c(0), serverName(serverName) {//Server::serverName(접두사)를 ROOT으로, 권한을 입력받음
 	ch::system_clock::time_point start = ch::system_clock::now();//생성 시간 측정 (start)

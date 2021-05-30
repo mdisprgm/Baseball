@@ -13,8 +13,6 @@ namespace ch = std::chrono;
 
 #include "NumberBaseballResult.h"
 #include "NumberBaseball.h"
-#include "broadcast.h"
-#include "ShiftOperators.h"
 
 //Permissions
 enum class Permission : char{//±ÇÇÑ

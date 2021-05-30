@@ -6,7 +6,6 @@
 
 #include "NumberBaseballResult.h"
 
-
 //constructors
 NBResult::NumberBaseballResult() {//기본 생성자
 	m_strike = 0;
