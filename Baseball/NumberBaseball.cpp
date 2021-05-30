@@ -2,7 +2,7 @@
 
 #include "headers.h"
 
-NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), m_b(0), m_c(0), serverName(serverName) {//Server::serverName(접두사)를 ROOT으로, 권한을 입력받음
+NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//Server::serverName(접두사)를 ROOT으로, 권한을 입력받음
 	ch::system_clock::time_point start = ch::system_clock::now();//생성 시간 측정 (start)
 	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
@@ -12,14 +12,14 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), 
 	std::uniform_int_distribution<int> dist(1, 9);
 
 	int tried = 0;//생성을 위해 시도한 횟수
-	m_b = dist(rnmt) + 48;//48 == char형 오프셋
+	_B = dist(rnmt) + 48;//48 == char형 오프셋
 	tried++;//+1회 시도
-	while (m_a == 0 || m_b == m_a) {//0이 아니면서(처음이 아니면서 중복 X)
-		m_a = dist(rnmt) + 48;
+	while (_A == 0 || _B == _A) {//0이 아니면서(처음이 아니면서 중복 X)
+		_A = dist(rnmt) + 48;
 		tried++;
 	}
-	while (m_c == 0 || m_a == m_c || m_b == m_c) {//0이 아니면서(처음이 아니면서 중복 X)
-		m_c = dist(rnmt) + 48;
+	while (_C == 0 || _A == _C || _B == _C) {//0이 아니면서(처음이 아니면서 중복 X)
+		_C = dist(rnmt) + 48;
 		tried++;
 	}
 
@@ -27,7 +27,7 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : m_a(0), 
 	ch::microseconds microSec = ch::duration_cast<ch::microseconds>(end - start);//us 단위로 계산
 
 	if (permission == (char)Permission::Developer) {//Developer, 개발자 모드면 정답과 시도 횟수까지 출력
-		std::cout << serverName << " 숫자가 생성되었습니다 : " << m_a << m_b << m_c << " (" << microSec.count() << "us)" << " tried " << tried << " times" << std::endl;
+		std::cout << serverName << " 숫자가 생성되었습니다 : " << _A << _B << _C << " (" << microSec.count() << "us)" << " tried " << tried << " times" << std::endl;
 	}
 	else if (permission == (char)Permission::User) {//USER, 유저 모드면 생성됐다는 메시지만 출력
 		std::cout << serverName << " 숫자가 생성되었습니다 (" << microSec.count() << "us 소요)" << std::endl;
@@ -44,18 +44,18 @@ NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
 	//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
 	while (1) {//무한 루프
 		std::cout << serverName << ' ' << "숫자를 예측해보세요 : ";
-		std::cin >> m_afp >> m_bfp >> m_cfp;//하나씩 입력받고
+		std::cin >> _Afp >> _Bfp >> _Cfp;//하나씩 입력받고
 
-		if (isAvailable(m_afp) && isAvailable(m_bfp) && isAvailable(m_cfp)) {//모두 유효한지 확인
-			if (m_afp != m_bfp && m_bfp != m_cfp) {//중복되는지 확인
-				if (m_afp == m_a) strike++;//스트라이크
-				else if (m_afp == m_b || m_afp == m_c) ball++;//볼
+		if (isAvailable(_Afp) && isAvailable(_Bfp) && isAvailable(_Cfp)) {//모두 유효한지 확인
+			if (_Afp != _Bfp && _Bfp != _Cfp) {//중복되는지 확인
+				if (_Afp == _A) strike++;//스트라이크
+				else if (_Afp == _B || _Afp == _C) ball++;//볼
 
-				if (m_bfp == m_b) strike++;
-				else if (m_bfp == m_a || m_bfp == m_c) ball++;
+				if (_Bfp == _B) strike++;
+				else if (_Bfp == _A || _Bfp == _C) ball++;
 
-				if (m_cfp == m_c) strike++;
-				else if (m_cfp == m_a || m_cfp == m_b) ball++;
+				if (_Cfp == _C) strike++;
+				else if (_Cfp == _A || _Cfp == _B) ball++;
 
 				else {//OUT
 					out = 1;
@@ -79,13 +79,13 @@ inline bool NBBall::isAvailable(char num) {//유효한 값(자릿수)인가
 
 //getters
 char NBBall::a() const {
-	return m_a;
+	return _A;
 }
 char NBBall::b() const {
-	return m_b;
+	return _B;
 }
 char NBBall::c() const {
-	return m_c;
+	return _C;
 }
 
 std::string NBBall::prefix() const {
