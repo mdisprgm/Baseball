@@ -11,12 +11,10 @@
 NBResult::NumberBaseballResult() {//기본 생성자
 	m_strike = 0;
 	m_ball = 0;
-	m_out = 0;
 }
 NBResult::NumberBaseballResult(count_t s, count_t b, count_t o) {//set 생성자 (입력받은 값으로)
 	m_strike = s;
 	m_ball = b;
-	m_out = o;
 }
 
 //getters

@@ -13,11 +13,13 @@ namespace ch = std::chrono;
 
 #include "NumberBaseballResult.h"
 #include "NumberBaseball.h"
+#include "broadcast.h"
+#include "ShiftOperators.h"
 
 //Permissions
-enum class Permission {//권한
-	Developer = 0,//개발자
-	User = 1//유저
+enum class Permission : char{//권한
+	Developer = '0',//개발자
+	User = '1'//유저
 };
 
 #endif

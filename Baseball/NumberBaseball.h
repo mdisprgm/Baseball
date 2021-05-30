@@ -1,5 +1,6 @@
 #pragma once
-#include "headers.h"
+
+#include "NumberBaseballResult.h"
 
 #ifndef __NUMBERBASEBALL_H__
 #define __NUMBERBASEBALL_H__
