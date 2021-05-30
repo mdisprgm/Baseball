@@ -8,32 +8,32 @@
 
 //constructors
 NBResult::NumberBaseballResult() {//기본 생성자
-	m_strike = 0;
-	m_ball = 0;
+	_Strike = 0;
+	_Ball = 0;
 }
-NBResult::NumberBaseballResult(count_t s, count_t b, count_t o) {//set 생성자 (입력받은 값으로)
-	m_strike = s;
-	m_ball = b;
+NBResult::NumberBaseballResult(count_t s, count_t b) {//set 생성자 (입력받은 값으로)
+	_Strike = s;
+	_Ball = b;
 }
 
 //getters
 count_t NBResult::strike() const {
-	return m_strike;
+	return _Strike;
 }
 count_t NBResult::ball() const {
-	return m_ball;
+	return _Ball;
 }
 
 //is out
 bool NBResult::isOut() {
-	if (m_strike == 0 && m_ball == 0) {
+	if (_Strike == 0 && _Ball == 0) {
 		return true;
 	}
 	return false;
 }
 //is homerun (WIN)
 bool NBResult::isHomerun() {
-	if (m_strike == 3 && m_ball == 0) {
+	if (_Strike == 3 && _Ball == 0) {
 		return true;
 	}
 	return false;

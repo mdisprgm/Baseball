@@ -49,7 +49,7 @@ int main() {
 		system("cls");//clear on launch
 
 		const std::string serverName = "[GAME]";
-		std::cout <<serverName << "\t\b0 : 개발자 테스트 모드\n\t\b1 : 유저 플레이 모드\n" << serverName << ' ' << "모드를 선택하세요 : ";
+		std::cout << serverName << "\t\b0 : 개발자 테스트 모드\n\t\b1 : 유저 플레이 모드\n" << serverName << ' ' << "모드를 선택하세요 : ";
 
 		char permission = 0;
 		std::cin >> permission;
@@ -70,14 +70,12 @@ int main() {
 		while (1) {//GAME START!
 			NBResult result = game.askPlayerNumber();
 
-			std::string strikeMsg;//스트라이크 수
-			std::string ballMsg;//볼 수
-
 			if (result.isHomerun()) {//정답이면
-				char ifRestart = 0;
 				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다." << std::endl;
-
+			}
+			if ((result.strike() == -1 && result.ball() == -1) || result.isHomerun()) {
 				std::cout << "게임을 다시 시작하시겠습니까? (Y/N) : ";
+				char ifRestart = 0;
 				while (ifRestart == 0) {
 					ifRestart = _getch();
 					if (ifRestart == 'N' || ifRestart == 'n') {
@@ -93,9 +91,7 @@ int main() {
 				system("cls");
 				break;
 			}
-			else {
-				std::cout << game << result << std::endl;
-			}
+			std::cout << game << result << std::endl;
 		}
 	}
 }

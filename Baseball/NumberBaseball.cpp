@@ -43,7 +43,8 @@ NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
 	static int triedCnt = 1;//예측한 횟수
 	//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
 	while (1) {//무한 루프
-		std::cout << serverName << ' ' << "숫자를 예측해보세요 : ";
+		int timeCnt = 0;
+		std::cout << serverName << ' ' << "숫자를 예측해보세요(기권하려면 000을 입력하세요) : ";
 		std::cin >> _Afp >> _Bfp >> _Cfp;//하나씩 입력받고
 
 		if (isAvailable(_Afp) && isAvailable(_Bfp) && isAvailable(_Cfp)) {//모두 유효한지 확인
@@ -63,13 +64,19 @@ NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
 				triedCnt++;
 				break;
 			}
+
+			else if ((_Afp - 48 | _Bfp - 48 | _Cfp - 48) == 0) {//모두 0인가, 그렇다면 기권
+				std::cout << serverName << " 정답은 " << _A << _B << _C << "였습니다" << std::endl;
+				return NBResult(-1, -1);//기권이면 Strike와 Ball을 -1로 반환
+			}
+
 			else {
-				std::cout << serverName << ' ' << "예측한 숫자의 각 자릿수는 모두 같지 않아야 합니다!" << std::endl;
-				std::cout << serverName << ' ' << "다시 입력해주세요" << std::endl;
+				std::cout << serverName << " 예측한 숫자의 각 자릿수는 모두 같지 않아야 합니다!" << std::endl;
+				std::cout << serverName << " 다시 입력해주세요" << std::endl;
 			}
 		}
 	}
-	return NBResult(strike, ball, out);
+	return NBResult(strike, ball);
 }
 
 inline bool NBBall::isAvailable(char num) {//유효한 값(자릿수)인가
