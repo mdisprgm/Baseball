@@ -1,12 +1,11 @@
 ﻿#include <iostream>
-
-#include <cstdlib> //system()
 #include <chrono> //time
 #include <random> //random
 #include <conio.h>//_getch()
 
-#include "headers.h"
+#include <cstdlib> //system()
 
+#include "headers.h"
 #include "broadcast.h"
 
 
