@@ -92,14 +92,14 @@ int main() {
 						return 0; //return in main; exit
 					}
 					else if (ifRestart == 'Y' || ifRestart == 'y') {
-						break;
+						break;//first break, break from loop to ask for restarting(here);
 					}
 					else {
 						ifRestart = 0;
 					}
 				};
 				system("cls");
-				break;
+				break;//second break, break from 'GAME START' line 77
 			}
 			std::cout << game << result << std::endl;
 		}
