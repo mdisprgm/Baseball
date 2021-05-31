@@ -9,7 +9,7 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _
 	//랜덤한 세 자리수 생성,단 자릿수의 숫자는 모두 다름
 	std::random_device rnDev;
 	std::mt19937 rnmt(rnDev());
-	std::uniform_int_distribution<int> dist(1, 9);
+	std::uniform_int_distribution<int> dist(0, 9);
 
 	int tried = 0;//생성을 위해 시도한 횟수
 	_B = dist(rnmt) + 48;//48 == char형 오프셋
