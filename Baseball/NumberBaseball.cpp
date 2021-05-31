@@ -38,9 +38,9 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _
 	std::cout << a << b << c << std::endl;*/ // for Debugging
 }
 
-NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
+NBResult NBBall::askPlayerNumber(int& tried) {//숫자 묻기
 	char strike = 0, ball = 0, out = 0;//result
-	static int triedCnt = 1;//예측한 횟수
+
 	//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
 	while (1) {//무한 루프
 		int timeCnt = 0;
@@ -61,7 +61,7 @@ NBResult NBBall::askPlayerNumber(void) {//숫자 묻기
 				else {//OUT
 					out = 1;
 				}
-				triedCnt++;
+				tried++;//from main with reference &
 				break;
 			}
 

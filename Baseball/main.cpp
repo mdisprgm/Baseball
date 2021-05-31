@@ -8,6 +8,8 @@
 #include "headers.h"
 #include "broadcast.h"
 
+auto ch_sc_now = ch::system_clock::now;//function pointer
+
 
 //NBBall
 std::ostream& operator<<(std::ostream& os, NBBall& game) {
@@ -44,8 +46,10 @@ std::ostream& operator<<(std::ostream& os, NBResult& result) {
 
 
 int main() {
+	ch::system_clock::time_point start, end;//for calculating time played
+	
 	while (1) {
-		system("cls");//clear on launch
+		system("cls");//clear screen on launch
 
 		const std::string serverName = "[GAME]";
 		std::cout << serverName << "\t\b0 : 개발자 테스트 모드\n\t\b1 : 유저 플레이 모드\n" << serverName << ' ' << "모드를 선택하세요 : ";
@@ -65,12 +69,19 @@ int main() {
 		}
 
 		NBBall game = NBBall(permission, serverName); //auto generate a number in Constructor
+		NBResult result;//result; for below loop
 
+		start = ch_sc_now();//game start
+
+		int tried;
 		while (1) {//GAME START!
-			NBResult result = game.askPlayerNumber();
+			tried = 0;
+			result = game.askPlayerNumber(tried);//NBResult
 
-			if (result.isHomerun()) {//정답이면
-				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다." << std::endl;
+			if (result.isHomerun()) {//is win
+				end = ch_sc_now();
+
+				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다. (" << tried << "회 시도, "<< ch::duration_cast<ch::milliseconds>(end-start).count()/1000.f <<"초 소요)" << std::endl;
 			}
 			if ((result.strike() == -1 && result.ball() == -1) || result.isHomerun()) {
 				std::cout << "게임을 다시 시작하시겠습니까? (Y/N) : ";

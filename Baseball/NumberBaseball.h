@@ -15,7 +15,7 @@ typedef class NumberBaseball {//안내를 위한 Server 상속
 public:
 	NumberBaseball(char, const std::string);//permission,serverName
 
-	NBResult askPlayerNumber(void);
+	NBResult askPlayerNumber(int&);
 
 	//getters
 	char a() const;
