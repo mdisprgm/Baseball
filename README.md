@@ -1,7 +1,6 @@
 # Baseball
 My Number Baseball Game
 
-
-ì½”ë“œ ì§€ì ì€ í™˜ì˜ì…ë‹ˆë‹¤.
+ÄÚµå ÁöÀûÀº È¯¿µÀÔ´Ï´Ù.
 
 Please advise
