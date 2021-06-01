@@ -10,7 +10,6 @@
 
 auto ch_sc_now = ch::system_clock::now;//function pointer
 
-
 //NBBall
 std::ostream& operator<<(std::ostream& os, NBBall& game) {
 	os << game.prefix() << ' ';
@@ -42,7 +41,6 @@ std::ostream& operator<<(std::ostream& os, NBResult& result) {
 
 	return os;
 }
-
 
 int main() {
 	ch::system_clock::time_point start, end;//for calculating time played
