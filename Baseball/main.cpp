@@ -16,7 +16,6 @@ std::ostream& operator<<(std::ostream& os, NBBall& game) {
 	os << game.prefix() << ' ';
 	return os;
 }
-
 //NBResult
 std::ostream& operator<<(std::ostream& os, NBResult& result) {
 	const count_t strike = result.strike();
