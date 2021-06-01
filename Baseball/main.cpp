@@ -99,7 +99,7 @@ int main() {
 					}
 				};
 				system("cls");
-				break;//second break, break from 'GAME START' line 77
+				break;//second break, break from 'GAME START!' line 77
 			}
 			std::cout << game << result << std::endl;
 		}
