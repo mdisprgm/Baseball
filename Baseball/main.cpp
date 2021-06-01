@@ -73,8 +73,8 @@ int main() {
 		start = ch_sc_now();//game start
 
 		int tried;
+		tried = 0;
 		while (1) {//GAME START!
-			tried = 0;
 			result = game.askPlayerNumber(tried);//NBResult
 
 			if (result.isHomerun()) {//is win
