@@ -43,8 +43,6 @@
     <None Include="..\.gitignore">
       <Filter>리소스 파일</Filter>
     </None>
-    <None Include="..\README.md">
-      <Filter>리소스 파일</Filter>
-    </None>
+    <None Include="..\README.md" />
   </ItemGroup>
 </Project>
