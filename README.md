@@ -1,9 +1,9 @@
 # Baseball
 
-반가워요
+반갑습니다!
 
 코드 지적은 환영입니다
 
-Hello
+Hello, World!
 
 Please advise
