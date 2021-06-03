@@ -3,7 +3,7 @@
 #include <random> //random
 #include <conio.h>//_getch()
 
-#include <cstdlib> //system()
+#include <cstdlib> //system() - almost to do cls
 
 #include "headers.h"
 #include "broadcast.h"
