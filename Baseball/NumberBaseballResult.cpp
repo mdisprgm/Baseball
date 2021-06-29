@@ -7,11 +7,11 @@
 #include "NumberBaseballResult.h"
 
 //constructors
-NBResult::NumberBaseballResult() {//기본 생성자
+NBResult::NumberBaseballResult() {//default constructor
 	_Strike = 0;
 	_Ball = 0;
 }
-NBResult::NumberBaseballResult(count_t s, count_t b) {//set 생성자 (입력받은 값으로)
+NBResult::NumberBaseballResult(count_t s, count_t b) {//constructor to set
 	_Strike = s;
 	_Ball = b;
 }
