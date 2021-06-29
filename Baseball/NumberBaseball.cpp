@@ -2,34 +2,34 @@
 
 #include "headers.h"
 
-NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//Server::serverName(접두사)를 ROOT으로, 권한을 입력받음
-	ch::system_clock::time_point start = ch::system_clock::now();//생성 시간 측정 (start)
+NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//serverName (it's Prefix) 
+	ch::system_clock::time_point start = ch::system_clock::now();//to measure time for generating (start)
 	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
-	//랜덤한 세 자리수 생성,단 자릿수의 숫자는 모두 다름
+	//generate three numbers randomly, different each other
 	std::random_device rnDev;
 	std::mt19937 rnmt(rnDev());
 	std::uniform_int_distribution<int> dist(0, 9);
 
-	int tried = 0;//생성을 위해 시도한 횟수
-	_B = dist(rnmt) + 48;//48 == char형 오프셋
-	tried++;//+1회 시도
-	while (_A == 0 || _B == _A) {//0이 아니면서(처음이 아니면서 중복 X)
+	int tried = 0;//to count for trying generate a number
+	_B = dist(rnmt) + 48;//48 == char ASCII offset
+	tried++;//tried
+	while (_A == 0 || _B == _A) {//Is not zero(not first, not overlapped)
 		_A = dist(rnmt) + 48;
 		tried++;
 	}
-	while (_C == 0 || _A == _C || _B == _C) {//0이 아니면서(처음이 아니면서 중복 X)
+	while (_C == 0 || _A == _C || _B == _C) {//Is not zero(not first, not overlapped)
 		_C = dist(rnmt) + 48;
 		tried++;
 	}
 
-	ch::system_clock::time_point end = ch::system_clock::now();//생성 시간 측정 (end)
-	ch::microseconds microSec = ch::duration_cast<ch::microseconds>(end - start);//us 단위로 계산
+	ch::system_clock::time_point end = ch::system_clock::now();//to measure time for generating (end)
+	ch::microseconds microSec = ch::duration_cast<ch::microseconds>(end - start);//calculate with 
 
-	if (permission == (char)Permission::Developer) {//Developer, 개발자 모드면 정답과 시도 횟수까지 출력
+	if (permission == (char)Permission::Developer) {//Developer mode, notify Answer and count tried
 		std::cout << serverName << " 숫자가 생성되었습니다 : " << _A << _B << _C << " (" << microSec.count() << "us)" << " tried " << tried << " times" << std::endl;
 	}
-	else if (permission == (char)Permission::User) {//USER, 유저 모드면 생성됐다는 메시지만 출력
+	else if (permission == (char)Permission::User) {//User mode, notify only message says completed
 		std::cout << serverName << " 숫자가 생성되었습니다 (" << microSec.count() << "us 소요)" << std::endl;
 	}
 	/*arr[a - 49]++;
@@ -38,19 +38,19 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _
 	std::cout << a << b << c << std::endl;*/ // for Debugging
 }
 
-NBResult NBBall::askPlayerNumber(int& tried) {//숫자 묻기
+NBResult NBBall::askPlayerNumber(int& tried) {//ask player for a number
 	char strike = 0, ball = 0, out = 0;//result
 
-	//char result[4] = { 0 }; <<-- 여기에 할려다가 class NumberBaseballResult 만듦
-	while (1) {//무한 루프
+	//char result[4] = { 0 }; <<-- I wanted to memory result here, but I made class NumberBaseballResult
+	while (1) {//infinite loop
 		int timeCnt = 0;
 		std::cout << serverName << ' ' << "숫자를 예측해보세요(기권하려면 000을 입력하세요) : ";
-		std::cin >> _Afp >> _Bfp >> _Cfp;//하나씩 입력받고
+		std::cin >> _Afp >> _Bfp >> _Cfp;//scan one at a time, fp means 'from player'
 
-		if (isAvailable(_Afp) && isAvailable(_Bfp) && isAvailable(_Cfp)) {//모두 유효한지 확인
-			if (_Afp != _Bfp && _Bfp != _Cfp) {//중복되는지 확인
-				if (_Afp == _A) strike++;//스트라이크
-				else if (_Afp == _B || _Afp == _C) ball++;//볼
+		if (isAvailable(_Afp) && isAvailable(_Bfp) && isAvailable(_Cfp)) {//check if all numbers are valid
+			if (_Afp != _Bfp && _Bfp != _Cfp) {//check if all numbers are different each
+				if (_Afp == _A) strike++;//strikes
+				else if (_Afp == _B || _Afp == _C) ball++;//balls
 
 				if (_Bfp == _B) strike++;
 				else if (_Bfp == _A || _Bfp == _C) ball++;
@@ -65,9 +65,9 @@ NBResult NBBall::askPlayerNumber(int& tried) {//숫자 묻기
 				break;
 			}
 
-			else if ((_Afp - 48 | _Bfp - 48 | _Cfp - 48) == 0) {//모두 0인가, 그렇다면 기권
+			else if ((_Afp - 48 | _Bfp - 48 | _Cfp - 48) == 0) {//are all 0? it means giving up
 				std::cout << serverName << " 정답은 " << _A << _B << _C << "였습니다" << std::endl;
-				return NBResult(-1, -1);//기권이면 Strike와 Ball을 -1로 반환
+				return NBResult(-1, -1);//if player gave up, result is -1
 			}
 
 			else {
@@ -79,7 +79,7 @@ NBResult NBBall::askPlayerNumber(int& tried) {//숫자 묻기
 	return NBResult(strike, ball);
 }
 
-inline bool NBBall::isAvailable(char num) {//유효한 값(자릿수)인가
+inline bool NBBall::isAvailable(char num) {//is num valid
 	if (num > '9' || num < '0') return false;
 	else return true;
 }
