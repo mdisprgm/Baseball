@@ -15,9 +15,9 @@ namespace ch = std::chrono;
 #include "NumberBaseball.h"
 
 //Permissions
-enum class Permission : char{//권한
-	Developer = '0',//개발자
-	User = '1'//유저
+enum class Permission : char{//Permission
+	Developer = '0',//for Developer
+	User = '1'//for common User
 };
 
 #endif
