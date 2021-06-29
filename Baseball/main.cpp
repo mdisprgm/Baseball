@@ -28,7 +28,7 @@ std::ostream& operator<<(std::ostream& os, NBResult& result) {
 			os << BC::messages[strike][ball];
 		}
 		else {
-			os << strikeMsg << ' ' << ballMsg << BC::messages[strike][ball];//일단 출력
+			os << strikeMsg << ' ' << ballMsg << BC::messages[strike][ball];//first, print
 		}
 	}
 
