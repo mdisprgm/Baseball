@@ -1,5 +1,7 @@
 .vs
 
+*.recipe
+
 *.tlog
 *.log
 
