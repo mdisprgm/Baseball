@@ -44,8 +44,8 @@ std::ostream& operator<<(std::ostream& os, NBResult& result) {
 
 int main() {
 	ch::system_clock::time_point start, end;//for calculating time played
-	
-	while (1) {
+
+	while (1) {//whole game
 		system("cls");//clear screen on launch
 
 		const std::string serverName = "[GAME]";
@@ -66,19 +66,22 @@ int main() {
 		}
 
 		NBBall game = NBBall(permission, serverName); //auto generate a number in Constructor
-		NBResult result;//result; for below loop
+		NBResult result(0, 0);//result; for below loop
 
 		start = ch_sc_now();//game start
 
 		int tried;
 		tried = 0;
-		while (1) {//GAME START!
+		bool onPlaying = true;
+		while (onPlaying) {//GAME START!
+			//std::cout << "==1==\n";
 			result = game.askPlayerNumber(tried);//NBResult
+			//std::cout << "==2==\n";
 
 			if (result.isHomerun()) {//is win
 				end = ch_sc_now();
 
-				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다. (" << tried << "회 시도, "<< ch::duration_cast<ch::milliseconds>(end-start).count()/1000.f <<"초 소요)" << std::endl;
+				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다. (" << tried << "회 시도, " << ch::duration_cast<ch::milliseconds>(end - start).count() / 1000.f << "초 소요)" << std::endl;
 			}
 			if ((result.strike() == -1 && result.ball() == -1) || result.isHomerun()) {
 				std::cout << "게임을 다시 시작하시겠습니까? (Y/N) : ";
@@ -89,14 +92,16 @@ int main() {
 						return 0; //return in main; exit
 					}
 					else if (ifRestart == 'Y' || ifRestart == 'y') {
-						break;//first break, break from loop to ask for restarting(here);
+						onPlaying = true;
+						break;//first break, break from loop to ask for restarting (this loop)
 					}
 					else {
 						ifRestart = 0;
 					}
 				};
 				system("cls");
-				break;//second break, break from 'GAME START!' line 77
+				if (onPlaying) break;//second break, break from 'GAME START!' line 75
+				//else return 0;
 			}
 			std::cout << game << result << std::endl;
 		}
