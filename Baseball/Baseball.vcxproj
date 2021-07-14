@@ -143,6 +143,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NumberBaseball.cpp" />
     <ClCompile Include="NumberBaseballResult.cpp" />
+    <ClCompile Include="NumberBaseballResultArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="broadcast.h">
