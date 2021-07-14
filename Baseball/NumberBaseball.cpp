@@ -2,7 +2,7 @@
 
 #include "headers.h"
 
-NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//serverName (it's Prefix) 
+NumberBaseball::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//serverName (it's Prefix) 
 	ch::system_clock::time_point start = ch::system_clock::now();//to measure time for generating (start)
 	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
@@ -38,7 +38,7 @@ NBBall::NumberBaseball(char permission, const std::string serverName) : _A(0), _
 	std::cout << a << b << c << std::endl;*/ // for Debugging
 }
 
-NBResult NBBall::askPlayerNumber(int& tried) {//ask player for a number
+NBResult NumberBaseball::askPlayerNumber(int& tried) {//ask player for a number
 	char strike = 0, ball = 0, out = 0;//result
 
 	//char result[4] = { 0 }; <<-- I wanted to memory result here, but I made class NumberBaseballResult
@@ -79,22 +79,22 @@ NBResult NBBall::askPlayerNumber(int& tried) {//ask player for a number
 	return NBResult(strike, ball);
 }
 
-inline bool NBBall::isAvailable(char num) {//is num valid
+inline bool NumberBaseball::isAvailable(char num) {//is num valid
 	if (num > '9' || num < '0') return false;
 	else return true;
 }
 
 //getters
-char NBBall::a() const {
+char NumberBaseball::a() const {
 	return _A;
 }
-char NBBall::b() const {
+char NumberBaseball::b() const {
 	return _B;
 }
-char NBBall::c() const {
+char NumberBaseball::c() const {
 	return _C;
 }
 
-std::string NBBall::prefix() const {
+std::string NumberBaseball::prefix() const {
 	return serverName;
 }
