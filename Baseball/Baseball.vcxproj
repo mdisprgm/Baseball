@@ -152,6 +152,7 @@
     <ClInclude Include="headers.h" />
     <ClInclude Include="NumberBaseball.h" />
     <ClInclude Include="NumberBaseballResult.h" />
+    <ClInclude Include="NumberBaseballResultArray.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore" />
