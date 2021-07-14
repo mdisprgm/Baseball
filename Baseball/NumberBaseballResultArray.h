@@ -5,8 +5,8 @@
 
 inline unsigned int isThere(char, char*, int);//returns count
 
-inline bool isBall(char, char*, int size);
+inline bool isBall(char, int, char*, int size);
 
-inline bool isStrike(char, char*, int);
+inline bool isStrike(char, int, char*, int);
 
 #endif
