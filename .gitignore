@@ -1,7 +1,5 @@
 .vs
 .vscode
-*.exe.recipe
-*FileListAbsolute*
 
 *.tlog
 *.log
