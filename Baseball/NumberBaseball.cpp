@@ -12,10 +12,10 @@ NumberBaseball::NumberBaseball(char permission, const std::string serverName) : 
 	std::uniform_int_distribution<int> dist(0, 9);
 
 	int tried = 0;//to count for trying generate a number
-	_B = dist(rnmt) + 48;//48 == char ASCII offset
+	_A = dist(rnmt) + 48;//48 == char ASCII offset
 	tried++;//tried
-	while (_A == 0 || _B == _A) {//Is not zero(not first, not overlapped)
-		_A = dist(rnmt) + 48;
+	while (_B == 0 || _B == _A) {//Is not zero(not first, not overlapped)
+		_B = dist(rnmt) + 48;
 		tried++;
 	}
 	while (_C == 0 || _A == _C || _B == _C) {//Is not zero(not first, not overlapped)
