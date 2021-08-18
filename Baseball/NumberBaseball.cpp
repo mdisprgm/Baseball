@@ -7,8 +7,8 @@ NumberBaseball::NumberBaseball(char permission, const std::string serverName) : 
 	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
 	//generate three numbers randomly, different each other
-	std::random_device rnDev;
-	std::mt19937 rnmt(rnDev());
+	std::random_device rnDevice;
+	std::mt19937 rnmt(rnDevice());
 	std::uniform_int_distribution<int> dist(0, 9);
 
 	int tried = 0;//to count for trying generate a number
