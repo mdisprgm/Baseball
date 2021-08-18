@@ -24,6 +24,6 @@ public:
 
 	std::string prefix() const;
 
-}NBBall;
+} NBBall;
 
 #endif
