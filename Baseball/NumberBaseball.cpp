@@ -57,7 +57,7 @@ NumberBaseball::NumberBaseball(char permission, const std::string serverName) : 
 }
 
 NBResult NumberBaseball::askPlayerNumber(int& tried) {//ask player for a number
-	char strike = 0, ball = 0, out = 0;//result
+	count_t strike = 0, ball = 0, out = 0;//result
 
 	//char result[4] = { 0 }; <<-- I wanted to memory result here, but I made class NumberBaseballResult
 	while (1) {//infinite loop
