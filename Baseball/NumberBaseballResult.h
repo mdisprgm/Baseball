@@ -2,10 +2,9 @@
 
 #ifndef __NUMBERBASEBALLRESULT_H__
 #define  __NUMBERBASEBALLRESULT_H__
-
 typedef unsigned int count_t;
-class NumberBaseballResult {//strike,ball
-	char _Strike = 0, _Ball = 0;//strike,ball
+typedef class NumberBaseballResult {//strike,ball
+count_t _Strike = 0, _Ball = 0;//strike,ball
 public:
 	NumberBaseballResult();
 	NumberBaseballResult(count_t, count_t);//s,b,o
