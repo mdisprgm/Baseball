@@ -6,7 +6,7 @@
 #include <iostream>
 #include <string>
 
-inline unsigned int isThere(char value, char* arr, int size) {
+inline unsigned int searchNum(char value, char* arr, int size) {
 	if (size < 1) {
 		std::cerr << "Invalid size!! in function" << __FUNCTION__ << std::endl;
 		exit(1);
@@ -21,7 +21,7 @@ inline unsigned int isThere(char value, char* arr, int size) {
 }
 
 inline bool isStrike(char value, int index, char* arr, int size) {
-	unsigned int cnt = isThere(value, arr, size);//get count of the number
+	unsigned int cnt = searchNum(value, arr, size);//get count of the number
 	if (cnt == 1) {
 		if (arr[index] == value) {
 			return true;
@@ -38,7 +38,7 @@ inline bool isStrike(char value, int index, char* arr, int size) {
 }
 
 inline bool isBall(char value, int index, char* arr, int size) {
-	unsigned int cnt = isThere(value, arr, size);
+	unsigned int cnt = searchNum(value, arr, size);
 	if (cnt == 1) {
 		if (arr[index] != value) {
 			return true;
