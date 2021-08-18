@@ -2,34 +2,52 @@
 
 #include "headers.h"
 
-NumberBaseball::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//serverName (it's Prefix) 
+NumberBaseball::NumberBaseball(char permission, const std::string serverName) : _A(0), _B(0), _C(0), serverName(serverName) {//serverName (it's Prefix)
+	bool DEBUG = false;
+	if (permission == (char)Permission::Developer) {
+		DEBUG = true;
+	}
+
 	ch::system_clock::time_point start = ch::system_clock::now();//to measure time for generating (start)
 	std::cout << serverName << " 숫자를 생성합니다" << std::endl;
 
 	//generate three numbers randomly, different each other
-	std::random_device rnDev;
-	std::mt19937 rnmt(rnDev());
+	std::random_device rnDevice;
+	std::mt19937 rnmt(rnDevice());
 	std::uniform_int_distribution<int> dist(0, 9);
 
-	int tried = 0;//to count for trying generate a number
-	_B = dist(rnmt) + 48;//48 == char ASCII offset
+	int tried = 0, oldTried = 0;//to count for trying generate a number
+	_A = dist(rnmt) + 48;//48 == char ASCII offset
 	tried++;//tried
-	while (_A == 0 || _B == _A) {//Is not zero(not first, not overlapped)
-		_A = dist(rnmt) + 48;
-		tried++;
+	if (DEBUG) {
+		std::cout << "A 생성 : " << _A << ", " << tried << "회" << std::endl;
 	}
+
+	oldTried = tried;
+	while (_B == 0 || _B == _A) {//Is not zero(not first, not overlapped)
+		_B = dist(rnmt) + 48;
+		tried++;
+		if (DEBUG) {
+			std::cout << "B 생성 : " << _B << ", " << tried - oldTried << "회" << std::endl;
+		}
+	}
+
+	oldTried = tried;
 	while (_C == 0 || _A == _C || _B == _C) {//Is not zero(not first, not overlapped)
 		_C = dist(rnmt) + 48;
 		tried++;
+		if (DEBUG) {
+			std::cout << "C 생성 : " << _C << ", " << tried - oldTried << "회" << std::endl;
+		}
 	}
 
 	ch::system_clock::time_point end = ch::system_clock::now();//to measure time for generating (end)
 	ch::microseconds microSec = ch::duration_cast<ch::microseconds>(end - start);//calculate with 
 
-	if (permission == (char)Permission::Developer) {//Developer mode, notify Answer and count tried
+	if (DEBUG) {//Developer mode, notify Answer and count tried
 		std::cout << serverName << " 숫자가 생성되었습니다 : " << _A << _B << _C << " (" << microSec.count() << "us)" << " tried " << tried << " times" << std::endl;
 	}
-	else if (permission == (char)Permission::User) {//User mode, notify only message says completed
+	else if (!DEBUG) {//User mode, notify only message says completed
 		std::cout << serverName << " 숫자가 생성되었습니다 (" << microSec.count() << "us 소요)" << std::endl;
 	}
 	/*arr[a - 49]++;
