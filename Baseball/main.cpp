@@ -48,7 +48,7 @@ int main() {
 	while (1) {
 		system("cls");//clear screen on launch
 
-		const std::string serverName = "[HOST]";
+		const std::string serverName = "[GAME]";
 		std::cout << serverName << "\t\b0 : 개발자 테스트 모드\n\t\b1 : 유저 플레이 모드\n" << serverName << ' ' << "모드를 선택하세요 : ";
 
 		char permission = 0;
