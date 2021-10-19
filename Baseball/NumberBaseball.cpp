@@ -56,7 +56,7 @@ NumberBaseball::NumberBaseball(char permission, const std::string serverName) : 
 	std::cout << a << b << c << std::endl;*/ // for Debugging
 }
 
-NBResult NumberBaseball::askPlayerNumber(int& tried) {//ask player for a number
+NBResult NumberBaseball::askPlayerNumber(int& triedCount) {//ask player for a number
 	count_t strike = 0, ball = 0, out = 0;//result
 
 	//char result[4] = { 0 }; <<-- I wanted to memory result here, but I made class NumberBaseballResult
@@ -79,7 +79,7 @@ NBResult NumberBaseball::askPlayerNumber(int& tried) {//ask player for a number
 				else {//OUT
 					out = 1;
 				}
-				tried++;//from main with reference &
+				triedCount++;//from main with reference &
 				break;
 			}
 
