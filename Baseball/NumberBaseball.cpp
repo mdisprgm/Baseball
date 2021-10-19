@@ -64,7 +64,7 @@ NBResult NumberBaseball::askPlayerNumber(int& tried) {//ask player for a number
 		int timeCnt = 0;
 		std::cout << serverName << ' ' << "숫자를 예측해보세요(기권하려면 000을 입력하세요) : ";
 		std::cin >> _Afp >> _Bfp >> _Cfp;//scan one at a time, fp means 'from player'
-
+		rewind(stdin);
 		if (isAvailable(_Afp) && isAvailable(_Bfp) && isAvailable(_Cfp)) {//check if all numbers are valid
 			if (_Afp != _Bfp && _Bfp != _Cfp) {//check if all numbers are different each
 				if (_Afp == _A) strike++;//strikes
