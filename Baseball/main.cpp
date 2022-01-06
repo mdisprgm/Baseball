@@ -70,18 +70,18 @@ int main() {
 
 		start = ch_sc_now();//game start
 
-		int tried;
-		tried = 0;
+		int triedCount;
+		triedCount = 0;
 		bool onPlaying = true;
 		while (onPlaying) {//GAME START!
 			//std::cout << "==1==\n";
-			result = game.askPlayerNumber(tried);//NBResult
+			result = game.askPlayerNumber();//NBResult
 			//std::cout << "==2==\n";
 
 			if (result.isHomerun()) {//is win
 				end = ch_sc_now();
 
-				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다. (" << tried << "회 시도, " << ch::duration_cast<ch::milliseconds>(end - start).count() / 1000.f << "초 소요)" << std::endl;
+				std::cout << "대단해요! 정답은 " << game.a() << game.b() << game.c() << "입니다. (" << triedCount << "회 시도, "<< ch::duration_cast<ch::milliseconds>(end-start).count()/1000.f <<"초 소요)" << std::endl;
 			}
 			if ((result.strike() == -1 && result.ball() == -1) || result.isHomerun()) {
 				std::cout << "게임을 다시 시작하시겠습니까? (Y/N) : ";
