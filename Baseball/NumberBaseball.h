@@ -15,7 +15,7 @@ typedef class NumberBaseball {
 public:
 	NumberBaseball(char, const std::string);//permission,serverName
 
-	NBResult askPlayerNumber(int&);
+	NBResult askPlayerNumber();
 
 	//getters
 	char a() const;
